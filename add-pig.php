@@ -132,8 +132,8 @@
 					<div class="row gap-2">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label class="control-label">Pig Weight</label>
-								<input type="text" name="weight" class="form-control" required>
+								<label class="control-label">Pig Weight(kilo)</label>
+								<input type="text" name="weight" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')" required>
 							</div>
 						</div>
 
@@ -150,9 +150,15 @@
 						<select name="month" class="form-control" required>
 							<?php 
 								for ($i = 1; $i <= 1000 ; $i++) { 
-									?>
+									if ($i == 1) {
+										?>
 									<option value="<?= $i ?>"><?= $i ?> month</option>
 									<?php 
+									}else if($i > 1){
+										?>
+										<option value="<?= $i ?>"><?= $i ?> months</option>
+										<?php 
+									}
 								}
 							?>
 							
@@ -171,7 +177,7 @@
 						<label class="control-label">Health Status</label>
 						<select name="status" class="form-control" required>
 							<option value="active">Active</option>
-							<option value="inactive">Inactive</option>
+							<!-- <option value="inactive">Inactive</option> -->
 							<option value="on treatment">On treatment</option>
 							<option value="sick">Sick</option>
 						</select>
@@ -249,17 +255,9 @@
 
 					</div>
 
-
-
-
-
-
-
-
-
 					<div class="form-group">
-						<label class="control-label">Remark</label>
-						<textarea class="form-control" name="remark" required></textarea>
+						<label class="control-label" style="display: none;">Remark</label>
+						<input class="form-control" name="remark" type="hidden">
 					</div>
 
 					<div class="form-group">
@@ -272,7 +270,7 @@
 						<input type="file" name="pigphoto" class="form-control" required>
 					</div>
 
-					<button name="submit" type="submit" name="submit" class="btn btn-sn btn-default">Update</button>
+					<button name="submit" type="submit" class="btn btn-sn btn-default">Submit</button>
 				</form>
 			</div>
 		</div>
