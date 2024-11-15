@@ -18,6 +18,7 @@ if (!$_GET['id'] or empty($_GET['id']) or $_GET['id'] == '') {
 		$gender = $obj->gender;
 		$dec = $obj->description;
 		$arr = $obj->arrived;
+		
 		$b_id = $obj->breed_id;
 		$c_id = $obj->classification_id;
 		$f_id = $obj->feed_id;
@@ -65,6 +66,7 @@ if (!$_GET['id'] or empty($_GET['id']) or $_GET['id'] == '') {
 					$n_breed = $_POST['breed'];
 					$n_classification = $_POST['classification'];
 					$n_feed = $_POST['feed'];
+					$n_gender = $_POST['gender'];
 					$nvitamins = $_POST['vitamins'];
 					$n_remark = $_POST['description'];
 					$n_status = $_POST['status'];
@@ -72,7 +74,7 @@ if (!$_GET['id'] or empty($_GET['id']) or $_GET['id'] == '') {
 
 					$n_id = $_POST['id'];
 
-					$update_query = $db->query("UPDATE pigs SET pigno = '$n_pigno',weight = '$n_weight',arrived = '$n_arrived', breed_id = '$n_breed',classification_id = '$n_classification',   feed_id = '$n_feed', description = '$n_remark',health_status = '$n_status', month = '$n_month' WHERE id = '$n_id' ");
+					$update_query = $db->query("UPDATE pigs SET pigno = '$n_pigno',gender = '$n_gender', weight = '$n_weight',arrived = '$n_arrived', breed_id = '$n_breed',classification_id = '$n_classification',   feed_id = '$n_feed', description = '$n_remark',health_status = '$n_status', month = '$n_month' WHERE id = '$n_id' ");
 
 					if ($update_query) { ?>
 
@@ -153,6 +155,13 @@ if (!$_GET['id'] or empty($_GET['id']) or $_GET['id'] == '') {
 						<label class="control-label">Health Status</label>
 						<input type="text" name="status" class="form-control" value="<?php echo $health; ?>">
 					</div> -->
+					<div class="form-group">
+    <label class="control-label">Gender</label>
+    <select name="gender" class="form-control" required>
+        <option value="male" <?php echo $gender == 'male' ? 'selected' : ''; ?>>Male</option>
+        <option value="female" <?php echo $gender == 'female' ? 'selected' : ''; ?>>Female</option>
+    </select>
+</div>
 
 					<div class="form-group">
 						<label class="control-label">Health Status</label>
