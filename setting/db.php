@@ -9,7 +9,6 @@ define('DB_NAME', 'u510162695_pig');
 // define('DB_USER', 'root');
 // define('DB_PASS', '');
 // define('DB_NAME', 'pig');
-
 // define('DB_PORT', '3306'); // Note: Changed to DB_PORT to align with typical naming conventions
 
 // Attempt to connect to the database
